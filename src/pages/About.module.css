@@ -1,0 +1,165 @@
+.page { animation: fadeUp var(--speed-slow) var(--ease) both; }
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.avatar { flex-shrink: 0; }
+
+.intro { margin-bottom: 3.5rem; }
+.intro p { color: var(--text-secondary); font-size: 1rem; font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
+.intro strong { color: var(--text); font-weight: 600; }
+
+.section { margin-bottom: 3.5rem; }
+.section h2 { margin-bottom: 1.25rem; font-size: 1.15rem; }
+
+/* Glass "What I Do" pills */
+.doGrid { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.doItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.1rem;
+  border-radius: var(--r-lg);
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inset);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  transition: all var(--speed) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.doItem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-shine);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--speed);
+}
+
+.doItem:hover {
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
+  color: var(--text);
+  transform: translateX(6px);
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+}
+
+.doItem:hover::before { opacity: 1; }
+
+.doNum {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+  width: 1.25rem;
+}
+
+/* Glass terminal */
+.terminal {
+  background: var(--code-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--glass-inset), var(--glass-shadow-lg);
+}
+
+.termBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.65rem 0.9rem;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.termDot { width: 9px; height: 9px; border-radius: 50%; }
+.termDot:first-child { background: #ef4444; opacity: 0.7; }
+.termDot:nth-child(2) { background: #eab308; opacity: 0.7; }
+.termDot:nth-child(3) { background: #22c55e; opacity: 0.7; }
+
+.termTitle {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.termBody {
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 2;
+}
+
+.termLine { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.termKey { color: var(--accent); }
+.termColon { color: var(--text-muted); }
+.termVal { color: var(--text-muted); }
+.termStr { color: var(--text-secondary); }
+
+/* Glass contact cards */
+.contactText { color: var(--text-secondary); font-size: 0.925rem; font-weight: 300; margin-bottom: 1rem; }
+
+.contactRow { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--r-lg);
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inset);
+  transition: all var(--speed) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.contactLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-shine);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--speed);
+}
+
+.contactLink:hover {
+  color: var(--accent);
+  background: var(--glass-hover);
+  border-color: var(--border-accent);
+  box-shadow: var(--glass-inset), var(--glass-shadow), 0 0 20px var(--accent-glow);
+  transform: translateX(6px);
+}
+
+.contactLink:hover::before { opacity: 1; }
+
+@media (max-width: 640px) {
+  .termBody { font-size: 0.7rem; padding: 1rem; }
+}

@@ -1,0 +1,32 @@
+.cover {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-inset);
+  transition: all var(--speed);
+  position: relative;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-shine);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--speed);
+  z-index: 1;
+}
+
+.cover svg { display: block; width: 100%; height: auto; }
+
+.cover:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+}
+
+.cover:hover::before { opacity: 1; }

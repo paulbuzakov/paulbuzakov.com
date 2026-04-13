@@ -1,0 +1,29 @@
+.preview {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inset);
+  transition: all var(--speed);
+  position: relative;
+}
+
+.preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-shine);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--speed);
+  z-index: 1;
+}
+
+.preview svg { display: block; width: 100%; height: auto; }
+
+.preview:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+}
+
+.preview:hover::before { opacity: 1; }
