@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { posts } from "../data/posts";
+import { projects } from "../data/projects";
 import Avatar from "../components/Avatar";
 import PostCover from "../components/PostCover";
+import ProjectPreview from "../components/ProjectPreview";
 import styles from "./Home.module.css";
 
 function readTime(content: string) {
@@ -10,6 +12,7 @@ function readTime(content: string) {
 
 export default function Home() {
   const recent = posts.slice(0, 3);
+  const favorites = projects.slice(0, 2);
 
   return (
     <div className={styles.page}>
@@ -39,6 +42,37 @@ export default function Home() {
         </div>
         <Avatar size={280} className={styles.avatar} />
       </section>
+
+      <div className={styles.rule}>
+        <span className={styles.ruleLabel}>Favorites</span>
+      </div>
+
+      <section className={styles.projects}>
+        {favorites.map((p, i) => (
+          <Link
+            key={p.title}
+            to="/projects"
+            className={styles.projectCard}
+            style={{ animationDelay: `${0.5 + i * 0.1}s` }}
+          >
+            <ProjectPreview title={p.title} tech={p.tech} className={styles.projectPreview} />
+            <div className={styles.projectBody}>
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
+              <div className={styles.projectTech}>
+                {p.tech.map((t) => (
+                  <span key={t} className={styles.projectBadge}>{t}</span>
+                ))}
+              </div>
+            </div>
+          </Link>
+        ))}
+      </section>
+
+      <Link to="/projects" className={styles.viewAll}>
+        View all projects
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </Link>
 
       <div className={styles.rule}>
         <span className={styles.ruleLabel}>Latest</span>

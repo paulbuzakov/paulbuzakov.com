@@ -175,6 +175,98 @@
   color: var(--text-muted);
 }
 
+/* ─── Favorite projects ─── */
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-inset);
+  color: inherit;
+  overflow: hidden;
+  transition: all var(--speed) var(--ease);
+  animation: fadeUp var(--speed-slow) var(--ease) both;
+  position: relative;
+}
+
+.projectCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-shine);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--speed);
+  z-index: 1;
+}
+
+.projectCard:hover {
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
+  color: inherit;
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+  transform: translateY(-3px);
+}
+
+.projectCard:hover::before { opacity: 1; }
+.projectCard:hover h3 { color: var(--accent); }
+
+.projectPreview {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  flex-shrink: 0;
+}
+
+.projectBody {
+  padding: 1rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.projectBody h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color var(--speed-fast);
+}
+
+.projectBody p {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+}
+
+.projectBadge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text-muted);
+}
+
 /* ─── Glass post cards ─── */
 .posts {
   display: flex;
@@ -276,4 +368,5 @@
   .card { padding: 0.75rem; }
   .avatar { display: none; }
   .glow { width: 80%; left: -10%; }
+  .projects { grid-template-columns: 1fr; }
 }

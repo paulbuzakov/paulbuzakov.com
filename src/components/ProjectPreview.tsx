@@ -1,20 +1,24 @@
 import styles from "./ProjectPreview.module.css";
 
 interface ProjectPreviewProps {
-  title: string;
-  tech: string[];
-  className?: string;
+  readonly title: string;
+  readonly tech: string[];
+  readonly className?: string;
 }
 
 function hashCode(s: string): number {
   let h = 0;
   for (let i = 0; i < s.length; i++) {
-    h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+    h = Math.trunc((h << 5) - h + (s.codePointAt(i) || 0));
   }
   return Math.abs(h);
 }
 
-export default function ProjectPreview({ title, tech, className = "" }: ProjectPreviewProps) {
+export default function ProjectPreview({
+  title,
+  tech,
+  className = "",
+}: ProjectPreviewProps) {
   const h = hashCode(title);
   const hue = (h % 40) + 70; // green-ish range to stay on brand
 
@@ -36,8 +40,22 @@ export default function ProjectPreview({ title, tech, className = "" }: ProjectP
         <circle cx="42" cy="12" r="4" fill="#22c55e" opacity="0.5" />
 
         {/* URL bar */}
-        <rect x="60" y="6" width="240" height="12" rx="3" fill="var(--bg-hover)" />
-        <text x="72" y="15" fill="var(--text-muted)" fontFamily="var(--font-mono)" fontSize="7" opacity="0.5">
+        <rect
+          x="60"
+          y="6"
+          width="240"
+          height="12"
+          rx="3"
+          fill="var(--bg-hover)"
+        />
+        <text
+          x="72"
+          y="15"
+          fill="var(--text-muted)"
+          fontFamily="var(--font-mono)"
+          fontSize="7"
+          opacity="0.5"
+        >
           localhost:3000
         </text>
 
@@ -53,11 +71,18 @@ export default function ProjectPreview({ title, tech, className = "" }: ProjectP
             height="6"
             rx="2"
             fill="var(--border-hover)"
-            opacity={i === (h % 5) ? 0.9 : 0.35}
+            opacity={i === h % 5 ? 0.9 : 0.35}
           />
         ))}
         {/* Active nav indicator */}
-        <rect x="0" y={36 + (h % 5) * 22 - 2} width="2" height="10" fill="var(--accent)" opacity="0.8" />
+        <rect
+          x="0"
+          y={36 + (h % 5) * 22 - 2}
+          width="2"
+          height="10"
+          fill="var(--accent)"
+          opacity="0.8"
+        />
 
         {/* Content area — fake cards */}
         {Array.from({ length: 3 }).map((_, i) => (
@@ -72,19 +97,44 @@ export default function ProjectPreview({ title, tech, className = "" }: ProjectP
               stroke="var(--border)"
               strokeWidth="0.5"
             />
-            <rect x={80 + i * 96} y="52" width={40 + ((h >> (i + 3)) % 20)} height="4" rx="1" fill="var(--border-hover)" />
-            <rect x={80 + i * 96} y="60" width={30 + ((h >> (i + 1)) % 15)} height="3" rx="1" fill="var(--border)" />
+            <rect
+              x={80 + i * 96}
+              y="52"
+              width={40 + ((h >> (i + 3)) % 20)}
+              height="4"
+              rx="1"
+              fill="var(--border-hover)"
+            />
+            <rect
+              x={80 + i * 96}
+              y="60"
+              width={30 + ((h >> (i + 1)) % 15)}
+              height="3"
+              rx="1"
+              fill="var(--border)"
+            />
           </g>
         ))}
 
         {/* Chart/graph area */}
-        <rect x="72" y="96" width="276" height="72" rx="4" fill="var(--bg-raised)" stroke="var(--border)" strokeWidth="0.5" />
+        <rect
+          x="72"
+          y="96"
+          width="276"
+          height="72"
+          rx="4"
+          fill="var(--bg-raised)"
+          stroke="var(--border)"
+          strokeWidth="0.5"
+        />
         <polyline
-          points={Array.from({ length: 10 }).map((_, i) => {
-            const x = 84 + i * 28;
-            const y = 150 - 10 - ((h >> (i + 2)) % 40);
-            return `${x},${y}`;
-          }).join(" ")}
+          points={Array.from({ length: 10 })
+            .map((_, i) => {
+              const x = 84 + i * 28;
+              const y = 150 - 10 - ((h >> (i + 2)) % 40);
+              return `${x},${y}`;
+            })
+            .join(" ")}
           stroke="var(--accent)"
           strokeWidth="1.5"
           fill="none"
@@ -92,11 +142,27 @@ export default function ProjectPreview({ title, tech, className = "" }: ProjectP
         />
         {/* Grid lines */}
         {[112, 128, 144].map((y) => (
-          <line key={y} x1="84" y1={y} x2="336" y2={y} stroke="var(--border)" strokeWidth="0.5" opacity="0.3" />
+          <line
+            key={y}
+            x1="84"
+            y1={y}
+            x2="336"
+            y2={y}
+            stroke="var(--border)"
+            strokeWidth="0.5"
+            opacity="0.3"
+          />
         ))}
 
         {/* Tech label */}
-        <text x="84" y="108" fill="var(--text-muted)" fontFamily="var(--font-mono)" fontSize="7" opacity="0.4">
+        <text
+          x="84"
+          y="108"
+          fill="var(--text-muted)"
+          fontFamily="var(--font-mono)"
+          fontSize="7"
+          opacity="0.4"
+        >
           {tech.slice(0, 2).join(" + ")}
         </text>
       </svg>
