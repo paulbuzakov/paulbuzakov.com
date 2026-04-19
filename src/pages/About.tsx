@@ -5,7 +5,10 @@ const stack = [
   { label: "Languages", items: ["Go", "TypeScript", "Python", "SQL"] },
   { label: "Frontend", items: ["React", "Next.js", "HTML/CSS", "Tailwind"] },
   { label: "Backend", items: ["Node.js", "PostgreSQL", "Redis", "gRPC"] },
-  { label: "Infra", items: ["Docker", "Kubernetes", "Terraform", "GH Actions"] },
+  {
+    label: "Infra",
+    items: ["Docker", "Kubernetes", "Terraform", "GH Actions"],
+  },
 ];
 
 export default function About() {
@@ -66,12 +69,14 @@ export default function About() {
                 <span className={styles.termKey}>{group.label}</span>
                 <span className={styles.termColon}>:</span>
                 <span className={styles.termVal}>
-                  [{group.items.map((it, j) => (
+                  [
+                  {group.items.map((it, j) => (
                     <span key={it}>
                       {j > 0 && ", "}
                       <span className={styles.termStr}>"{it}"</span>
                     </span>
-                  ))}]
+                  ))}
+                  ]
                 </span>
               </div>
             ))}
@@ -85,13 +90,23 @@ export default function About() {
           Always open to interesting conversations and collaboration.
         </p>
         <div className={styles.contactRow}>
-          <a href="mailto:paul@paulbuzakov.com" className={styles.contactLink}>
-            paul@paulbuzakov.com
+          <a href="mailto:paulbuzakov@gmail.com" className={styles.contactLink}>
+            paulbuzakov@gmail.com
           </a>
-          <a href="https://github.com/paulbuzakov" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+          <a
+            href="https://github.com/paulbuzakov"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.contactLink}
+          >
             github.com/paulbuzakov
           </a>
-          <a href="https://linkedin.com/in/paulbuzakov" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+          <a
+            href="https://linkedin.com/in/paulbuzakov"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.contactLink}
+          >
             linkedin.com/in/paulbuzakov
           </a>
         </div>
