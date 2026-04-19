@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import styles from "./Header.module.css";
 
@@ -13,9 +13,6 @@ const links: { to: string; label: string; end?: boolean }[] = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => setMenuOpen(false), [location]);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
@@ -37,6 +34,7 @@ export default function Header() {
               key={to}
               to={to}
               end={end}
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `${styles.navLink} ${isActive ? styles.active : ""}`
               }

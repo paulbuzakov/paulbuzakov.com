@@ -4,6 +4,7 @@ import { projects } from "../data/projects";
 import Avatar from "../components/Avatar";
 import PostCover from "../components/PostCover";
 import ProjectPreview from "../components/ProjectPreview";
+import TypewriterTitle from "../components/TypewriterTitle";
 import styles from "./Home.module.css";
 
 function readTime(content: string) {
@@ -21,10 +22,12 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.heroText}>
           <p className={styles.label}>Software Engineer</p>
-          <h1 className={styles.title}>
-            Paul<br />
-            <span className={styles.accent}>Buzakov</span>
-          </h1>
+          <TypewriterTitle
+            firstName="Paul"
+            lastName="Buzakov"
+            className={styles.title}
+            accentClassName={styles.accent}
+          />
           <p className={styles.bio}>
             Building reliable systems and clean interfaces.
             Writing about backend architecture, TypeScript, DevOps,

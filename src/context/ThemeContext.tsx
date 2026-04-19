@@ -1,34 +1,17 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  type ReactNode,
-} from "react";
+import { useState, useEffect, type ReactNode } from "react";
+import { ThemeContext, type Theme } from "./theme-context";
 
-type Theme = "dark" | "light";
-
-interface ThemeCtx {
-  theme: Theme;
-  toggle: () => void;
-}
-
-const ThemeContext = createContext<ThemeCtx>({
-  theme: "light",
-  toggle: () => {},
-});
-
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export function ThemeProvider({ children }: { readonly children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
     if (stored === "light" || stored === "dark") return stored;
-    return window.matchMedia("(prefers-color-scheme: light)").matches
+    return globalThis.matchMedia("(prefers-color-scheme: light)").matches
       ? "light"
       : "dark";
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
 
@@ -39,8 +22,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
     </ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  return useContext(ThemeContext);
 }

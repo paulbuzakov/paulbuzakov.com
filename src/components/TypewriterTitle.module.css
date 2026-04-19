@@ -1,0 +1,42 @@
+.line {
+  display: inline;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.75em;
+  margin-left: 4px;
+  background: var(--accent);
+  vertical-align: baseline;
+  transform: translateY(0.02em);
+}
+
+.cursor[data-done="true"] {
+  animation: tw-blink 1s step-end infinite;
+}
+
+.ghost {
+  visibility: hidden;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: tw-blink 1s step-end infinite; }
+}
