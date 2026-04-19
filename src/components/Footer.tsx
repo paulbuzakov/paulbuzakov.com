@@ -15,7 +15,7 @@ export default function Footer() {
           <a href="https://linkedin.com/in/paulbuzakov" target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
-          <a href="mailto:paul@paulbuzakov.com">Email</a>
+          <a href="mailto:paulbuzakov@gmail.com">Email</a>
         </nav>
       </div>
     </footer>
