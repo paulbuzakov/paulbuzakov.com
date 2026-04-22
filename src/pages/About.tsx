@@ -2,13 +2,11 @@ import Avatar from "../components/Avatar";
 import styles from "./About.module.css";
 
 const stack = [
-  { label: "Languages", items: ["Go", "TypeScript", "Python", "SQL"] },
-  { label: "Frontend", items: ["React", "Next.js", "HTML/CSS", "Tailwind"] },
-  { label: "Backend", items: ["Node.js", "PostgreSQL", "Redis", "gRPC"] },
-  {
-    label: "Infra",
-    items: ["Docker", "Kubernetes", "Terraform", "GH Actions"],
-  },
+  { label: "Languages", items: ["C#", "TypeScript", "JavaScript"] },
+  { label: "Backend", items: [".NET", "ASP.NET Web API", "Entity Framework"] },
+  { label: "Architecture", items: ["Microservices", "Distributed Systems", "REST APIs", "Clean Architecture"] },
+  { label: "Databases", items: ["PostgreSQL", "SQL Server"] },
+  { label: "Infra", items: ["Docker", "Nginx", "YARP", "CI/CD", "Azure"] },
 ];
 
 export default function About() {
@@ -23,17 +21,17 @@ export default function About() {
 
       <section className={styles.intro}>
         <p>
-          I'm Paul Buzakov, a software engineer who enjoys building reliable
-          backend systems and polished user interfaces. I care deeply about
-          clean code, developer experience, and shipping software that works
-          well under pressure.
+          I'm Paul Buzakov, a Senior Software Engineer with{" "}
+          <strong>11+ years of experience</strong> building high-load
+          distributed systems in fintech and enterprise domains. I've led
+          engineering teams up to 17 people and owned system design for
+          microservices platforms at national scale.
         </p>
         <p>
-          I'm most at home working with <strong>Go</strong>,{" "}
-          <strong>TypeScript</strong>, and <strong>React</strong>, but I'm
-          always exploring new tools and ideas. Right now I'm particularly
-          interested in distributed systems, observability, and infrastructure
-          as code.
+          I'm most at home working with <strong>C#</strong>,{" "}
+          <strong>.NET</strong>, and <strong>distributed architectures</strong>,
+          consistently delivering measurable improvements in performance,
+          reliability, and delivery speed.
         </p>
       </section>
 
@@ -41,10 +39,10 @@ export default function About() {
         <h2>What I Do</h2>
         <div className={styles.doGrid}>
           {[
-            "Design & build APIs and microservices",
-            "Create responsive, accessible web applications",
-            "Set up CI/CD pipelines and deployment infra",
-            "Mentor engineers and lead code reviews",
+            "Architect high-load distributed systems & microservices",
+            "Design backend services for fintech & enterprise platforms",
+            "Lead engineering teams and conduct technical interviews",
+            "Optimize performance, reliability, and delivery pipelines",
           ].map((item, i) => (
             <div key={item} className={styles.doItem}>
               <span className={styles.doNum}>0{i + 1}</span>

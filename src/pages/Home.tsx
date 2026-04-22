@@ -21,7 +21,7 @@ export default function Home() {
 
       <section className={styles.hero}>
         <div className={styles.heroText}>
-          <p className={styles.label}>Software Engineer</p>
+          <p className={styles.label}>Senior Software Engineer</p>
           <TypewriterTitle
             firstName="Paul"
             lastName="Buzakov"
@@ -29,9 +29,9 @@ export default function Home() {
             accentClassName={styles.accent}
           />
           <p className={styles.bio}>
-            Building reliable systems and clean interfaces.
-            Writing about backend architecture, TypeScript, DevOps,
-            and engineering culture.
+            Building high-load distributed systems in fintech and enterprise.
+            11+ years of experience with .NET, microservices, and
+            backend architecture.
           </p>
           <div className={styles.actions}>
             <Link to="/blog" className={styles.btnPrimary}>
