@@ -8,32 +8,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "DevLog CLI",
+    title: "Get-Due.com",
     description:
-      "A command-line tool for developers to maintain a structured work journal. Supports markdown entries, tagging, and full-text search.",
-    tech: ["Go", "SQLite", "Cobra"],
-    github: "https://github.com/paulbuzakov/devlog-cli",
-  },
-  {
-    title: "API Gateway",
-    description:
-      "A lightweight API gateway with rate limiting, JWT validation, and request routing. Built for microservice architectures.",
-    tech: ["Go", "Redis", "Docker"],
-    github: "https://github.com/paulbuzakov/api-gateway",
-  },
-  {
-    title: "Task Board",
-    description:
-      "A real-time Kanban board with drag-and-drop, WebSocket updates, and team collaboration features.",
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-    github: "https://github.com/paulbuzakov/task-board",
-    live: "https://taskboard.paulbuzakov.com",
-  },
-  {
-    title: "Infra Dashboard",
-    description:
-      "A monitoring dashboard that aggregates metrics from multiple cloud providers into a unified view.",
-    tech: ["React", "TypeScript", "Grafana API", "Docker"],
-    github: "https://github.com/paulbuzakov/infra-dashboard",
+      "A personal finance tracking app for stocks, properties, cash accounts, loans, and recurring payments with a unified calendar view. Clean Architecture .NET 10 API with JWT auth and Quartz-scheduled jobs, paired with a Next.js 16 App Router frontend backed by React Query and Zustand. Fully containerized with Docker Compose.",
+    tech: [".NET 10", "Next.js 16", "PostgreSQL", "Docker", "TypeScript"],
+    github: "https://github.com/paulbuzakov/get-due.com",
+    live: "https://get-due.com",
   },
 ];
